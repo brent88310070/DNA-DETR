@@ -3,8 +3,10 @@
 
 
 ---------------------------------------
-DNA-DETR: Sequence representation matters in object detection for functional genomic elements
----------------------------------------
+# DNA-DETR: Sequence representation matters in object detection for functional genomic elements
+
+DNA-DETR, an adaptation of the DETR architecture for object detection in genomic sequences, using Non-B DNA motifs as benchmarks. Our study reveals that conventional one-hot encoding inadequately captures complex sequence features. By comparing one-hot, dot matrix, and hybrid representations, we show that representation choice significantly impacts detection accuracy and generalization. Combined representations consistently improve both localization and classification of functional genomic elements, highlighting the importance of representation-aware modeling in sequence analysis.
+
 ## Method
  <img src="fig_method.png" style="align:center" />
 
