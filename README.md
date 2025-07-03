@@ -24,13 +24,12 @@ conda activate dnadetr
 
 ### Data pre-processing
 Pre-process the dataset of DNA-DETR \
-* You need to divide the training & testing seq datatets in first, and execute script separately.
-* The label data format is illustrated in the [Link](./label_format.md) & [Label example](./label_example.json).
+* You need to divide the training & testing seq datatets first, and execute script separately.
+* There are three types of features: `one-hot`, `dot`, `both`
+* The label datasets format is illustrated in the [Link](./label_format.md) & [Label example](./label_example.json).
 ```Python
 python seq2feature.py \
     --fasta data/your_data.fasta \
-    --kmer 3 \
-    --base-height 3 \
     --feature both \
     --out-prefix data/train_features \
     --n-proc 8
