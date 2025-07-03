@@ -48,7 +48,7 @@ class DETR(nn.Module):
                - "pred_logits": the classification logits (including no-object) for all queries.
                                 Shape= [batch_size x num_queries x (num_classes + 1)]
                - "pred_boxes": The normalized boxes coordinates for all queries, represented as
-                               (center_x, center_y, height, width). These values are normalized in [0, 1],
+                               (center_x, obj_length). These values are normalized in [0, 1],
                                relative to the size of each individual image (disregarding possible padding).
                                See PostProcess for information on how to retrieve the unnormalized bounding box.
                - "aux_outputs": Optional, only returned when auxilary losses are activated. It is a list of
@@ -150,7 +150,7 @@ class SetCriterion(nn.Module):
     def loss_boxes(self, outputs, targets, indices, num_boxes):
         """Compute the loss related to the bounding boxes, the DIoU loss
            targets dicts must contain the key "boxes" containing a tensor of dim [nb_target_boxes, 2]
-           The target boxes are expected in format (center_x, seq_length), normalized by the sequence length.
+           The target boxes are expected in format (center_x, obj_length), normalized by the sequence length.
         """
         assert 'pred_boxes' in outputs
         idx = self._get_src_permutation_idx(indices)
