@@ -5,7 +5,7 @@
 ---------------------------------------
 # DNA-DETR: Sequence representation matters in object detection for functional genomic elements
 
-DNA-DETR, an adaptation of the DETR architecture for object detection in genomic sequences, using Non-B DNA motifs as benchmarks. Our study reveals that conventional one-hot encoding inadequately captures complex sequence features. By comparing one-hot, dot matrix, and hybrid representations, we show that representation choice significantly impacts detection accuracy and generalization. Combined representations consistently improve both localization and classification of functional genomic elements, highlighting the importance of representation-aware modeling in sequence analysis.
+DNA-DETR, an adaptation of the DETR architecture for object detection in genomic sequences, using Non-B DNA elements as benchmarks. Our study reveals that conventional one-hot encoding inadequately captures complex sequence features. By comparing one-hot, dot matrix, and both representations, we show that representation choice significantly impacts detection accuracy and generalization. Combined representations consistently improve both localization and classification of functional genomic elements, highlighting the importance of representation-aware modeling in sequence analysis.
 
 ## Method
  <img src="fig_method.png" style="align:center" />
@@ -23,13 +23,13 @@ conda activate dnadetr
 ## Quick start
 
 ### Data pre-processing
-Pre-process the dataset of DNA-DETR \
+Pre-process the dataset of DNA-DETR 
 * You need to divide the training & testing seq datatets first, and execute script separately.
 * There are three types of features: `one-hot`, `dot`, `both`
 * The label datasets format is illustrated in the [Link](./label_format.md) & [Label example](./label_example.json).
 ```Python
 python seq2feature.py \
-    --fasta data/your_data.fasta \
+    --fasta data/your_train_data.fasta \
     --feature both \
     --out-prefix data/train_features \
     --n-proc 8
@@ -44,8 +44,8 @@ nohup python -u main.py \
       --num_queries 30 \
       --data_num_class 6 \
       --feature_type both \
-      --data_path ./data/both/ \
-      --output_dir ./output > train.out &
+      --data_path data/both/ \
+      --output_dir output > train.out &
 ```
 
 Evaluate Non-B DNA data based on DNA-DETR model
@@ -53,8 +53,8 @@ Evaluate Non-B DNA data based on DNA-DETR model
 nohup python -u main.py \
       --batch_size 2 \
       --eval \
-      --resume ./output/your_checkpoint.pth \
-      --output_dir ./output > eval.out &
+      --resume output/your_checkpoint.pth \
+      --output_dir output > eval.out &
 ```
 
 ---
