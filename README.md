@@ -39,16 +39,22 @@ python seq2feature.py \
 Train a DNA-DETR model based on your Non-B DNA data
 ```Python
 nohup python -u main.py \
+      --epochs 50 \
+      --batch_size 128 \
+      --num_queries 30 \
+      --data_num_class 6 \
+      --feature_type both \
+      --data_path ./data/both/ \
       --output_dir ./output > train.out &
 ```
 
-Predict Non-B DNA data based on DNA-DETR model
+Evaluate Non-B DNA data based on DNA-DETR model
 ```Python
 nohup python -u main.py \
       --batch_size 2 \
       --eval \
       --resume ./output/your_checkpoint.pth \
-      --output_dir ./output > test.out &
+      --output_dir ./output > eval.out &
 ```
 
 ---
@@ -169,7 +175,7 @@ Loss write to TensorBoard for visualization:
 <pre><code>tensorboard --logdir ./runs --port 8000</code></pre>
 </details>
 
-<details> <summary>Predict Non-B DNA by DNA-DETR model (with important hyperparameters)</summary>
+<details> <summary>Evaluate Non-B DNA by DNA-DETR model (with important hyperparameters)</summary>
   <pre><code>usage: main.py [-h]
                [--feature_type FEATURE_TYPE]
                [--dataset_file DATASET_FILE]
@@ -184,13 +190,13 @@ optional arguments:
 
 dataset parameters:
   --feature_type FEATURE_TYPE
-                        Feature type: one-hot | dot | both [default: one-hot]
+                        Feature type: one-hot | dot | both [default: both]
   --dataset_file DATASET_FILE
                         Dataset name key [default: nonb]
   --data_num_class DATA_NUM_CLASS
                         Number of classes (max_obj_id + 1) [default: 6]
   --data_path DATA_PATH
-                        Dataset path [default: ./data/one-hot/]
+                        Dataset path [default: ./data/both/]
 
 runtime and I/O:
   --output_dir OUTPUT_DIR
