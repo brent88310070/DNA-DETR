@@ -164,6 +164,9 @@ runtime and I/O:
   --resume RESUME       Resume from checkpoint path
   --start_epoch START_EPOCH
                         Starting epoch [default: 0]</code></pre>
+
+Loss write to TensorBoard for visualization:
+<pre><code>tensorboard --logdir ./runs --port 8000</code></pre>
 </details>
 
 <details> <summary>Predict Non-B DNA by DNA-DETR model (with important hyperparameters)</summary>

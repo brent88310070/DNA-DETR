@@ -1,4 +1,9 @@
+# ------------------------------------------------------------------------
+# DNA-DETR: Copyright (c) 2025 SenseTime. All Rights Reserved.
+# Licensed under the Apache License
+# Modified from DETR (https://github.com/facebookresearch/detr)
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+# ------------------------------------------------------------------------
 """
 Utilities for bounding box manipulation and GIoU.
 """

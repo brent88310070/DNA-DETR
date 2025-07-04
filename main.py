@@ -1,4 +1,9 @@
+# ------------------------------------------------------------------------
+# DNA-DETR: Copyright (c) 2025 SenseTime. All Rights Reserved.
+# Licensed under the Apache License
+# Modified from DETR (https://github.com/facebookresearch/detr)
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+# ------------------------------------------------------------------------
 import argparse
 import datetime
 import json
@@ -57,10 +62,6 @@ def get_args_parser():
                         help="Number of query slots")
     parser.add_argument('--pre_norm', action='store_true')
 
-    # * Segmentation
-    parser.add_argument('--masks', action='store_true',
-                        help="Train segmentation head if the flag is provided")
-
     # Loss
     parser.add_argument('--no_aux_loss', dest='aux_loss', action='store_false',
                         help="Disables auxiliary decoding losses (loss at each layer)")
@@ -77,11 +78,11 @@ def get_args_parser():
                         help="Relative classification weight of the no-object class")
 
     # dataset parameters
-    parser.add_argument('--feature_type', default='one-hot', help="one-hot | dot | both")
+    parser.add_argument('--feature_type', default='both', help="one-hot | dot | both")
     parser.add_argument('--dataset_file', default='nonb')
     parser.add_argument('--data_num_class', default=6, type=int,
                         help="for a dataset that has a single class with id 1, you should pass `num_classes` to be 2 (max_obj_id + 1)")
-    parser.add_argument('--data_path', default='./data/one-hot/', type=str)
+    parser.add_argument('--data_path', default='./data/both/', type=str)
     parser.add_argument('--remove_difficult', action='store_true')
 
     parser.add_argument('--output_dir', default='./output',

@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 # coding: utf-8
+
+# ------------------------------------------------------------------------
+# DNA-DETR: Copyright (c) 2025 SenseTime. All Rights Reserved.
+# Licensed under the Apache License
+# ------------------------------------------------------------------------
 """
 Convert DNA sequences to dot-matrix / one-hot features
 and save them as a compressed NumPy file.
