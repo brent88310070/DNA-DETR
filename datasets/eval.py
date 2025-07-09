@@ -105,11 +105,6 @@ def class_record(outputs, targets, class_result_dict, data_num_class):
     return class_result_dict
 
 
-def save_eval_result(eval_result_dict, output_dir):
-    filename = output_dir + '/eval_result/eval_result.json'
-    with open(filename, 'w') as f:
-        json.dump(eval_result_dict, f)
-
 
 def calculate_ap(eval_result_dict):
     ap_dict = {i: [] for i in range(0, len(eval_result_dict))}
@@ -145,23 +140,6 @@ def calculate_ap(eval_result_dict):
         ap_dict[DNA_type] = ap
 
     return ap_dict
-
-
-def plot_ap_curve(precision, recall, output_dir):
-    """
-    Plot the Average Precision (AP) curve given precision and recall values.
-    """
-    plt.figure()
-    plt.step(recall, precision, color='b', alpha=0.2, where='post')
-    plt.fill_between(recall, precision, step='post', alpha=0.2, color='b')
-    plt.xlabel('Recall')
-    plt.ylabel('Precision')
-    plt.title('Precision-Recall curve')
-    plt.ylim([0.0, 1.05])
-    plt.xlim([0.0, 1.0])
-
-    output_dir = output_dir + "/ap_plot/ap.png"
-    plt.savefig(output_dir)
 
 
 def calculate_class_performance(class_result):

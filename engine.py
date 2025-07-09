@@ -115,12 +115,9 @@ def evaluate(model, criterion, data_loader, device, output_dir, args):
         eval_result_dict = evals.eval_record(outputs, targets, eval_result_dict) #AP
         class_result_dict= evals.class_record(outputs, targets, class_result_dict, args.data_num_class)
 
-    # save eval dict
-    evals.save_eval_result(eval_result_dict, output_dir)
 
     # compute average precision
     ap_dict = evals.calculate_ap(eval_result_dict)
-
     TP = class_result_dict['TP']
     FP = class_result_dict['FP']
     TN = class_result_dict['TN']
