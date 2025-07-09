@@ -25,18 +25,20 @@ conda activate dnadetr
 ### Data pre-processing
 Pre-process the dataset of DNA-DETR 
 * You need to divide the training & testing seq datatets first, and execute script separately.
-* There are three types of features: `one-hot`, `dot`, `both`
+* There are three types of features: `one-hot`, `dot`, `both`.
 * The label datasets format is illustrated in the [Link](./label_format.md) & [Label example](./label_example.json).
 ```Python
 python seq2feature.py \
     --fasta data/your_train_data.fasta \
-    --feature both \
+    --feature_type both \
     --out-prefix data/train_features \
     --n-proc 8
 ```
 
 ### DNA-DETR
 Train a DNA-DETR model based on your Non-B DNA data
+* `num_queries`: Set to the max number of elements in each sequence.
+* `data_num_class`:  Total number of classes (Including negative sample class.)
 ```Python
 nohup python -u main.py \
       --epochs 50 \

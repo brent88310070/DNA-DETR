@@ -15,7 +15,7 @@ python seq2feature.py \
     --fasta data/train.fasta \
     --kmer 3 \
     --base-height 3 \
-    --feature both \                    #["dot", "one-hot", "both"]
+    --feature_type both \                    #["dot", "one-hot", "both"]
     --out-prefix data/train_features
 """
 from __future__ import annotations
@@ -94,7 +94,6 @@ def process_sequence(
         mats.extend([dot_self, dot_rev, dot_rev_comp])
 
     if feature_type in ("one-hot", "both"):
-        # pad除非「只做 one-hot」
         pad_one_hot = feature_type != "one-hot"
         one_hot = csr_matrix(seq_to_one_hot(seq, base_height, pad=pad_one_hot))
         mats.append(one_hot)
@@ -142,7 +141,7 @@ def get_args() -> argparse.Namespace:
         help="Rows per nucleotide in one-hot",
     )
     p.add_argument(
-        "--feature",
+        "--feature_type",
         choices=["dot", "one-hot", "both"],
         default="both",
         help="Which feature(s) to compute",
