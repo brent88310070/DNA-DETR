@@ -121,8 +121,8 @@ def calculate_ap(eval_result_dict):
         true_positives, false_positives = 0, 0 
 
         total_true_objects = len(iou_list) + eval_result_dict[DNA_type]["num_FN"]
-        print(DNA_type, " num_FN: ", eval_result_dict[DNA_type]["num_FN"])
-        print(DNA_type, " iou_list: ", len(iou_list))
+        # print(DNA_type, " num_FN: ", eval_result_dict[DNA_type]["num_FN"])
+        # print(DNA_type, " iou_list: ", len(iou_list))
 
         for i in range(len(iou_list)):
             if iou_list[i] > iou_threshold:

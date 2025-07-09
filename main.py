@@ -193,7 +193,7 @@ def main(args):
         return ap_list
 
     # Loss write to TensorBoard
-    writer = SummaryWriter(Path(args.output_dir, "runs").as_posix())
+    writer = SummaryWriter(Path("./", "runs").as_posix())
 
     print("Start training")
     start_time = time.time()
